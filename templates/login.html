@@ -1,0 +1,169 @@
+﻿<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0" />
+    <title>Log-in</title>
+    <link href="../static/css/bootstrap.css" rel="stylesheet" />
+    <script src="../static/js/jquery.min.js"></script>
+    <script src="../static/js/popper.min.js"></script>
+    <style>
+        /*    --------------------------------------------------
+	:: Login Section
+	-------------------------------------------------- */
+        #login {
+            padding-top: 50px
+        }
+
+            #login .form-wrap {
+                width: 30%;
+                margin: 0 auto;
+            }
+
+            #login h1 {
+                color: #1fa67b;
+                font-size: 18px;
+                text-align: center;
+                font-weight: bold;
+                padding-bottom: 20px;
+            }
+
+            #login .form-group {
+                margin-bottom: 25px;
+            }
+
+            #login .checkbox {
+                margin-bottom: 20px;
+                position: relative;
+                -webkit-user-select: none;
+                -moz-user-select: none;
+                -ms-user-select: none;
+                -o-user-select: none;
+                user-select: none;
+            }
+
+                #login .checkbox.show:before {
+                    content: '\e013';
+                    color: #1fa67b;
+                    font-size: 17px;
+                    margin: 1px 0 0 3px;
+                    position: absolute;
+                    pointer-events: none;
+                    font-family: 'Glyphicons Halflings';
+                }
+
+                #login .checkbox .character-checkbox {
+                    width: 25px;
+                    height: 25px;
+                    cursor: pointer;
+                    border-radius: 3px;
+                    border: 1px solid #ccc;
+                    vertical-align: middle;
+                    display: inline-block;
+                }
+
+                #login .checkbox .label {
+                    color: #6d6d6d;
+                    font-size: 13px;
+                    font-weight: normal;
+                }
+
+            #login .btn.btn-custom {
+                font-size: 14px;
+                margin-bottom: 20px;
+            }
+
+            #login .forget {
+                font-size: 13px;
+                text-align: center;
+                display: block;
+            }
+
+        /*    --------------------------------------------------
+	:: Inputs & Buttons
+	-------------------------------------------------- */
+        .form-control {
+            color: #212121;
+        }
+
+        .btn-custom {
+            color: #fff;
+            background-color: #1fa67b;
+        }
+
+            .btn-custom:hover,
+            .btn-custom:focus {
+                color: #fff;
+            }
+
+    </style>
+    <script>
+         $(document).ready(function() {
+            var messages = "{{ get_flashed_messages() }}";
+
+            if (typeof messages != 'undefined' && messages != '[]') {
+                $("#myModal").modal();
+            };
+        });
+    </script>
+</head>
+
+<body>
+    <main>
+        <nav class="navbar navbar-expand-md navbar-dark bg-dark">
+            <div class="mx-auto order-0">
+                <span class="navbar-brand mb-0 h1">Digital Advance</span>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".dual-collapse2">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            </div>
+        </nav>
+            <div class="container"> 
+                <div id="myModal" class="modal fade" role="dialog">
+                    <div class="modal-dialog">
+                        <div class="modal-content">
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="exampleModalLabel">Mensaje del sistema !</h5>
+                            </div>
+                            <div class="modal-body">
+                                {% with messages = get_flashed_messages() %}
+                                {% if messages %}
+                                    {% for message in messages %}
+                                        {{ message }}
+                                    {% endfor %}
+                                {% endif %}
+                                {% endwith %}
+                            </div>
+                            <div class="modal-footer">
+                                <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>        
+                <section id="login">           
+                    <div class="row">
+                        <div class="col 12">
+                            <div class="form-wrap">
+                                <h1>Ingresa con tu cuenta de correo</h1>
+                                    <form role="form" method="post" action="/login" id="login-form" autocomplete="off">
+                                        <div class="form-group">
+                                            <label for="email" class="sr-only">Email</label>
+                                            <input type="email" name="email" id="email" class="form-control" placeholder="ingrese su correo">
+                                        </div>
+                                        <div class="form-group">
+                                            <label for="key" class="sr-only">Password</label>
+                                            <input type="password" name="password" id="password" class="form-control" placeholder="ingrese su contraseña">
+                                        </div>
+                                        <input type="submit" id="btn-login"  class="btn btn-custom btn-lg btn-block" value="Log-in">
+                                    </form>
+                                    <hr>
+                                </div>
+                            </div> <!-- /.col-xs-12 -->
+                        </div> <!-- /.row -->
+                    </div> <!-- /.container -->
+                </section>
+    </main>
+    <script src="../static/js/bootstrap.js"></script>
+</body>
+
+</html>

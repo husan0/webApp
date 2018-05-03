@@ -1,0 +1,92 @@
+{% extends "base.html" %} 
+{% block content %}
+<br>
+<form class="form-inline" action="/buscarModificar" method="post">
+    <input class="form-control mr-sm-2" type="search" name="nombre" id="nombre" placeholder="Ingrese un codigo o nombre" aria-label="Search" required>
+    <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+</form>
+<br>
+<form class="col s12" action="/modificarProductos" method="POST" enctype="multipart/form-data">
+    <div class="form-group">
+        <div class="input-field col s6">
+            Nombre Producto:
+            <input type="text" class="form-control" name="nombre" id="nombre" value="{{nombre}}" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s6">
+            Stock:
+            <input type="number" class="form-control" name="stock" id="stock" value="{{stock}}" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s6">
+            Precio:
+            <input type="number" class="form-control" name="precio" id="precio" value="{{precio}}" required>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s6">
+            Categoria Producto:
+            <div class="input-field">
+                <select name="categoria_producto" class="form-control" id="categoria_producto" required>
+                    {% for row in categoria_producto %} {% if row[0]==categoria: %}
+                    <option value="{{row[0]}}" selected>{{row[1]}}</option>
+                    {% else %}
+                    <option value="{{row[0]}}">{{row[1]}}</option>
+                    {% endif %} {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s6">
+            Tipo Producto:
+            <div class="input-field">
+                <select name="tipo_producto" class="form-control" id="tipo_producto" required>
+                    {% for row in tipo_producto %} {% if row[0]==tipo: %}
+                    <option value="{{row[0]}}" selected>{{row[1]}}</option>
+                    {% else %}
+                    <option value="{{row[0]}}">{{row[1]}}</option>
+                    {% endif %} {% endfor %}
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s6">
+            Detalle:
+            <textarea name="detalle_producto" class="form-control" id="detalle_producto" cols="10" rows="3" required>{{detalle}}</textarea>
+        </div>
+    </div>
+    <div class="form-group">
+        <label for="InputFile">Imagen:</label>
+        <br>
+        <input type="image" src="../{{imagen}}" width="100" height="100">
+        <input type="file" class="form-control-file" id="file" name="file" aria-describedby="fileHelp" required>
+        <small id="fileHelp" class="form-text text-muted">Los tipos de archivos soportados son JPG , PNG</small>
+    </div>
+    <div class="form-group">
+        <div class="input-field col s6">
+            Activo:
+            <br>
+            {% if activo==0: %}
+                <input type="radio" name="activo" id="activo" value="{{activo}}" checked="true" required> No activo
+                <br>
+                <input type="radio" name="activo" id="activo" value="1" required>Activo
+            {% else %}
+                <input type="radio" name="activo" id="activo" value="0" required>No activo
+                <br>
+                <input type="radio" name="activo" id="activo" value="{{activo}}" checked="true" required>Activo
+            {% endif %}
+        </div>
+    </div>
+    <div class="form-group">
+            <div class="input-field col s6">
+                <button class="btn btn-primary" type="submit" name="action">Modificar</button>
+            </div>
+    </div>
+</form>
+{% endblock %}
+
+  

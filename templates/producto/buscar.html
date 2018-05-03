@@ -1,0 +1,38 @@
+﻿{% extends "base.html" %} 
+{% block content %}        
+<br>
+        <form class="form-inline" action="/buscar" method="post">
+            <input class="form-control mr-sm-2" type="search" name="nombre" id="nombre" placeholder="Search" aria-label="Search" required>
+            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+        </form>
+        <br>
+        <table class="table"> 
+            <tbody>
+                <img src="{{ imagen }}">
+                <tr>
+                    <th scope="row">Id: </th>
+                    <td>{{id}}</th>
+                    <th scope="row">Nombre:</th>
+                    <td> {{nombre}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Stock:</th>
+                    <td>{{stock}}</td>
+                    <th scope="row">Precio:</th>
+                    <td>{{precio}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Tipo:</th>
+                    <td>{{tipo}}</td>
+                    <th scope="row">Categoria:</th>
+                    <td>{{categoria}}</td>
+                </tr>
+                <tr>
+                    <th scope="row">Detalle:</th>
+                    <td>{{detalle}}</td>
+                </tr>
+            </tbody>
+        </table>
+        <br>
+{% endblock %}
+

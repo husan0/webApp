@@ -1,0 +1,78 @@
+{% extends "base.html" %} 
+{% block content %}
+  <div class="container">
+    <div class="section">
+      <div class="row">
+          <div class="alert alert-success">
+              <strong>{{ message }}</strong>
+          </div>
+        <div class="col-md-12 col-sm-12">
+          <table class="table table-bordered">
+                <tr>
+                    <th>
+                        ID
+                    </th>
+                    <th>
+                        Nombre
+                    </th>
+                    <th>
+                        Stock
+                    </th>
+                    <th>
+                        Precio
+                    </th>
+                    <th>
+                        ID Categoria Producto
+                    </th>
+                    <th>
+                        ID tipo producto
+                    </th>
+                    <th>
+                        Detalle Producto
+                    </th>
+                    <th>
+                        Imagen
+                    </th>
+                    <th>
+                        Activo
+                    </th>
+                </tr>
+                {% for row in productos %}
+                <tr>
+                        <td>
+                            {{row[0]}}
+                        </td>
+                        <td>
+                            {{row[1]}}
+                        </td>
+                        <td>
+                            {{row[2]}}
+                        </td>
+                        <td>
+                            {{row[3]}}
+                        </td>
+                        <td>
+                            {{row[4]}}
+                        </td>
+                        <td>
+                            {{row[5]}}
+                        </td>
+                        <td>
+                            {{row[6]}}
+                        </td>
+                        <td>
+                            <img src="../static\Uploads\{{row[7]}}" alt="" height="100" width="100">
+                        </td>
+                        <td>
+                            {{row[8]}}
+                        </td>
+                    </tr>
+                {% endfor %}
+            </table>
+            <a class="btn btn-primary" href="/index">Volver</a>     
+        </div>
+    </div>
+    </div>
+  </div>
+{% endblock %}
+ 
